@@ -19,21 +19,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.myapplication.R
 
 @Composable
-fun SavingsHeading(height: Int, amount: String){
-    val current = LocalConfiguration.current
-    val width = current.screenWidthDp
+fun SavingsHeading(height: Int, width: Int, amount: String){
+
     Card(modifier = Modifier
         .height(height.dp)
         .width(width.dp)
         .background(Color.Transparent),
         shape = RoundedCornerShape(18.dp),
-        colors = CardDefaults.cardColors(Color.Black)
+        colors = CardDefaults.cardColors(colorResource(id = R.color.primary))
     ){
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center,
@@ -45,10 +46,3 @@ fun SavingsHeading(height: Int, amount: String){
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun display(){
-    Column(modifier = Modifier.fillMaxSize().padding(10.dp)) {
-        SavingsHeading(height = 190, amount = "20000")
-    }
-}
