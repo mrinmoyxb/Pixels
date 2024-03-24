@@ -24,10 +24,10 @@ import com.example.myapplication.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomTextInput(){
+fun CustomTextInput(text: String){
     var value by remember{mutableStateOf("")}
     TextField(value = value, onValueChange = {value = it},
-        placeholder = {Text("Enter Amount", fontSize =  20.sp, color = Color.Black, fontWeight = FontWeight.Light)},
+        placeholder = {Text(text, fontSize =  20.sp, color = Color.Black, fontWeight = FontWeight.Light)},
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(10.dp),
         textStyle = TextStyle(fontSize = 30.sp, color = Color.Black, fontWeight = FontWeight.SemiBold),
