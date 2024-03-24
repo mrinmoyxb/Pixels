@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CustomHeading(height: Int, amount: String){
+fun SavingsHeading(height: Int, amount: String){
     val current = LocalConfiguration.current
     val width = current.screenWidthDp
     Card(modifier = Modifier
@@ -49,6 +49,6 @@ fun CustomHeading(height: Int, amount: String){
 @Composable
 fun display(){
     Column(modifier = Modifier.fillMaxSize().padding(10.dp)) {
-        CustomHeading(height = 190, amount = "20000")
+        SavingsHeading(height = 190, amount = "20000")
     }
 }
