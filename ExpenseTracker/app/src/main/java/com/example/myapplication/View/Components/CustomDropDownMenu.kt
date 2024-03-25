@@ -1,12 +1,21 @@
 package com.example.myapplication.View.Components
 
+import android.content.ClipData
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -24,8 +33,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,7 +49,11 @@ import com.example.myapplication.R
 fun CustomDropDownMenu(){
     var isExpanded by remember{mutableStateOf(false)}
     var deposit by remember{mutableStateOf("Select an expense type")}
-    val options = listOf("Bills", "Food", "Transportation", "Others")
+    var iconToDisplay by remember { mutableStateOf(Icons.Filled.Person)}
+    val options = listOf(Item("Bills", Icons.Filled.Refresh),
+        Item("Food", Icons.Filled.ShoppingCart),
+        Item("Transportation", Icons.Filled.Share),
+        Item("Others", Icons.Filled.Person))
 
     Box(
         modifier = Modifier
@@ -51,29 +66,39 @@ fun CustomDropDownMenu(){
             )
     ) {
         ExposedDropdownMenuBox(expanded = isExpanded, onExpandedChange = { isExpanded = !isExpanded }) {
-            TextField(
-                value = deposit,
-                onValueChange = {},
-                modifier = Modifier
-                    .menuAnchor()
-                    .fillMaxSize(),
-                readOnly = true,
-                textStyle = TextStyle(fontSize = 23.sp, fontWeight = FontWeight.Light),
-                leadingIcon = {Icon(imageVector = Icons.Filled.ShoppingCart, contentDescription = "")},
-                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded) },
-                colors = TextFieldDefaults.textFieldColors(
-                    containerColor = Color.Transparent,
-                    cursorColor = Color.Black,
-                    focusedIndicatorColor = Color.White,
-                    unfocusedIndicatorColor = Color.White
+
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Icon(imageVector = iconToDisplay, contentDescription = "")
+                TextField(
+                    value = deposit,
+                    onValueChange = {},
+                    modifier = Modifier
+                        .menuAnchor()
+                        .fillMaxSize(),
+                    readOnly = true,
+                    textStyle = TextStyle(fontSize = 23.sp, fontWeight = FontWeight.Light),
+                    colors = TextFieldDefaults.textFieldColors(
+                        containerColor = Color.Transparent,
+                        cursorColor = Color.Black,
+                        focusedIndicatorColor = Color.White,
+                        unfocusedIndicatorColor = Color.White
+                    )
                 )
-            )
+            }
 
             ExposedDropdownMenu(expanded = isExpanded, onDismissRequest = { isExpanded = false }) {
-                options.forEach { label ->
-                    DropdownMenuItem(text = { Text(label) }, onClick = {
-                        deposit = label
-                        isExpanded = false
+                options.forEach { item ->
+                    DropdownMenuItem(text = {
+                        Row(modifier = Modifier.fillMaxWidth()){
+                            Icon(imageVector = item.icon, contentDescription = item.name)
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(item.name, fontWeight = FontWeight.Bold)
+                        }
+                                            },
+                        onClick = {
+                            deposit = item.name
+                            iconToDisplay = item.icon
+                            isExpanded = false
                     }
                     )
                 }
@@ -82,3 +107,5 @@ fun CustomDropDownMenu(){
         }
     }
 }
+
+data class Item(val name: String, val icon: ImageVector)
