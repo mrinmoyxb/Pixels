@@ -20,13 +20,16 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHost
+import androidx.navigation.NavHostController
 import com.example.myapplication.R
 import com.example.myapplication.View.Components.DepositWithdrawCard
 import com.example.myapplication.View.Components.SavingsHeading
 
-@Preview(showBackground = true)
+
 @Composable
-fun HomeScreen(){
+fun HomeScreen(navController: NavHostController){
     val config = LocalConfiguration.current
     val screenWidth = config.screenWidthDp
     val height: Int = 210
@@ -43,10 +46,10 @@ fun HomeScreen(){
             Column(modifier = Modifier.height(height.dp), verticalArrangement = Arrangement.SpaceBetween){
                 DepositWithdrawCard(text = "Deposit", icon = Icons.Filled.ArrowForward,
                     height = (height/2)-2, width = ((screenWidth - 90) / 2)-10,
-                    boxColor = colorResource(id = R.color.secondary), fontSize = 20)
+                    boxColor = colorResource(id = R.color.secondary), fontSize = 20, navController)
                 DepositWithdrawCard(text = "Withdraw", icon = Icons.Filled.ArrowBack,
                     height = (height/2)-2, width = ((screenWidth - 90) / 2)-10,
-                    boxColor = colorResource(id = R.color.secondary), fontSize = 20)
+                    boxColor = colorResource(id = R.color.secondary), fontSize = 20, navController)
             }
         }
             LazyColumn {

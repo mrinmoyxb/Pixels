@@ -1,5 +1,6 @@
 package com.example.myapplication.View.Components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,13 +28,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.myapplication.R
 
 @Composable
-fun DepositWithdrawCard(text: String, icon: ImageVector, height: Int, width: Int, boxColor: Color, fontSize: Int){
+fun DepositWithdrawCard(text: String, icon: ImageVector, height: Int, width: Int, boxColor: Color, fontSize: Int, navHostController: NavHostController){
     Card(modifier = Modifier
         .height(height.dp)
-        .width(width.dp), shape = RoundedCornerShape(18.dp),
+        .width(width.dp)
+        .clickable { navHostController.navigate("expenses_screen") },
+        shape = RoundedCornerShape(18.dp),
         colors = CardDefaults.cardColors(boxColor)) {
         Box(modifier = Modifier
             .fillMaxWidth()

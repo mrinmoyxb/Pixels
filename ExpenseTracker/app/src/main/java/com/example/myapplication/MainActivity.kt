@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.myapplication.Navigation.MainScreen
 import com.example.myapplication.View.DepositWithdrawScreen.AddExpensesScreen
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApplicationTheme {
 
-                AddExpensesScreen()
+                MainScreen()
             }
         }
     }
