@@ -1,6 +1,7 @@
 package com.example.myapplication.View.Components
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -28,9 +29,9 @@ fun CustomTextInput(text: String){
     var value by remember{mutableStateOf("")}
     TextField(value = value, onValueChange = {value = it},
         placeholder = {Text(text, fontSize =  20.sp, color = Color.Black, fontWeight = FontWeight.Light)},
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().height(70.dp),
         shape = RoundedCornerShape(10.dp),
-        textStyle = TextStyle(fontSize = 30.sp, color = Color.Black, fontWeight = FontWeight.SemiBold),
+        textStyle = TextStyle(fontSize = 25.sp, color = Color.Black, fontWeight = FontWeight.SemiBold),
         maxLines = 1,
         colors = TextFieldDefaults.textFieldColors(
             containerColor = colorResource(id = R.color.tertiary),

@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -28,7 +29,7 @@ import com.example.myapplication.View.Components.SavingsHeading
 fun HomeScreen(){
     val config = LocalConfiguration.current
     val screenWidth = config.screenWidthDp
-    val height: Int = 190
+    val height: Int = 210
 
     Column(modifier = Modifier
         .fillMaxSize()
@@ -37,16 +38,15 @@ fun HomeScreen(){
     {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
 
-            SavingsHeading(height = height, width = ((screenWidth) / 2)+24, amount = "20000")
+            SavingsHeading(height = height, width = ((screenWidth) / 2)+30, amount = "20000")
 
-            Column(modifier = Modifier.height(190.dp), verticalArrangement = Arrangement.SpaceBetween){
+            Column(modifier = Modifier.height(height.dp), verticalArrangement = Arrangement.SpaceBetween){
                 DepositWithdrawCard(text = "Deposit", icon = Icons.Filled.ArrowForward,
-                    height = (height/2)-2, width = ((screenWidth - 90) / 2)-3,
+                    height = (height/2)-2, width = ((screenWidth - 90) / 2)-10,
                     boxColor = colorResource(id = R.color.secondary), fontSize = 20)
-
                 DepositWithdrawCard(text = "Withdraw", icon = Icons.Filled.ArrowBack,
-                    height = (height/2)-2, width = ((screenWidth - 90) / 2)-3,
-                    boxColor = colorResource(id = R.color.secondary), 20)
+                    height = (height/2)-2, width = ((screenWidth - 90) / 2)-10,
+                    boxColor = colorResource(id = R.color.secondary), fontSize = 20)
             }
         }
             LazyColumn {
