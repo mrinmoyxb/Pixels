@@ -63,7 +63,7 @@ fun AddExpensesScreen(){
 
             // Expense type:
             TextHeading(title = "Expense type", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
-            CustomDropDownMenu()
+            CustomDropDownMenu(options)
             Spacer(modifier = Modifier.height(25.dp))
 
             CustomButton(text = "Done", fontSize = 25, boxColor = colorResource(id = R.color.primary), textColor = Color.White)
