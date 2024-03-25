@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.R
 import com.example.myapplication.View.Components.CustomButton
+import com.example.myapplication.View.Components.CustomDropDownMenu
 import com.example.myapplication.View.Components.CustomTextInput
 import com.example.myapplication.View.Components.TextHeading
 
@@ -42,8 +43,8 @@ fun AddAmountScreen(){
             CustomTextInput("Write a short description...")
             Spacer(modifier = Modifier.height(10.dp))
 
-            TextHeading(title = "Amount", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
-            CustomTextInput("Enter amount")
+            TextHeading(title = "Expense type", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
+            CustomDropDownMenu()
             Spacer(modifier = Modifier.height(25.dp))
 
             CustomButton(text = "Done", fontSize = 25, boxColor = colorResource(id = R.color.primary), textColor = Color.White)
