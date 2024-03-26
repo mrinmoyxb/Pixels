@@ -8,10 +8,10 @@ import java.sql.Date
 data class FinanceTable(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+
     val amount: Double,
     val type: String,
     val description: String,
-    val isExpense: Boolean,
-    val isEarning: Boolean,
+    val isEarnings: Int, // 1 for True and 0 for False
     val dateAdded: Date
 )
