@@ -9,18 +9,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.myapplication.R
-import com.example.myapplication.View.Components.DepositWithdrawCard
 import com.example.myapplication.View.Components.SavingsHeading
 
 
@@ -35,23 +31,10 @@ fun HomeScreen(navController: NavHostController){
         .background(Color.White)
         .padding(10.dp))
     {
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-
-            // balance
-            SavingsHeading(height = height, width = ((screenWidth) / 2)+30, amount = "20000")
-
-            Column(modifier = Modifier.height(height.dp), verticalArrangement = Arrangement.SpaceBetween){
-                
-                // earnings screen
-//                DepositWithdrawCard(text = "Deposit", icon = Icons.Filled.ArrowForward,
-//                    height = (height/2)-2, width = ((screenWidth - 90) / 2)-10,
-//                    boxColor = colorResource(id = R.color.secondary), fontSize = 20, navController, route = "earningsScreen")
-//
-//                // expenses screen
-//                DepositWithdrawCard(text = "Withdraw", icon = Icons.Filled.ArrowBack,
-//                    height = (height/2)-2, width = ((screenWidth - 90) / 2)-10,
-//                    boxColor = colorResource(id = R.color.secondary), fontSize = 20, navController, route = "expensesScreen")
-            }
+        // balance
+        SavingsHeading(height = height, width = screenWidth, amount = "20000")
+        Button(onClick = { navController.navigate("addAmountScreen")}) {
+            Text("Click Here")
         }
             LazyColumn {
                 item {

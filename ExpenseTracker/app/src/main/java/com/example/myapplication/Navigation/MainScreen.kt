@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.myapplication.View.S3_DepositWithdrawScreen.AddEarningsScreen
 import com.example.myapplication.View.S3_DepositWithdrawScreen.AddExpensesScreen
 import com.example.myapplication.View.S1_HomeScreen.HomeScreen
+import com.example.myapplication.View.S2_AddAmountScreen.AddAmountScreen
 
 @Composable
 fun MainScreen(){
@@ -20,6 +21,9 @@ fun MainScreen(){
         }
         composable(route = "earningsScreen"){
             AddEarningsScreen()
+        }
+        composable(route = "addAmountScreen"){
+            AddAmountScreen(navController)
         }
     }
 }

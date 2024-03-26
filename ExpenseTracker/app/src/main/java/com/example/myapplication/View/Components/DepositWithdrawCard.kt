@@ -35,12 +35,12 @@ import com.example.myapplication.R
 
 @Composable
 fun DepositWithdrawCard(text: String, icon: ImageVector, height: Int, width: Int, boxColor: Color,
-                        fontSize: Int, /*navHostController: NavHostController*/ route: String){
+                        fontSize: Int, navHostController: NavHostController, route: String){
     val context = LocalContext.current
     Card(modifier = Modifier
         .height(height.dp)
         .width(width.dp)
-        .clickable { //navHostController.navigate(route)
+        .clickable { navHostController.navigate(route)
                    Toast.makeText(context,"Clicked", Toast.LENGTH_SHORT).show()},
         shape = RoundedCornerShape(18.dp),
         colors = CardDefaults.cardColors(boxColor)) {

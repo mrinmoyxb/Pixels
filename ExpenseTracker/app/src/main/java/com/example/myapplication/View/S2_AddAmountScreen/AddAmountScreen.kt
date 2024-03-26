@@ -18,16 +18,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.myapplication.Model.TextConstants
 import com.example.myapplication.R
 import com.example.myapplication.View.Components.DepositWithdrawCard
 import com.example.myapplication.View.Components.TextHeading
 
-@Preview(showBackground = true)
 @Composable
-fun AddAmountScreen(){
+fun AddAmountScreen(navHostController: NavHostController){
     val config = LocalConfiguration.current
     val screenWidth = config.screenWidthDp
     val height: Int = 210
@@ -46,13 +45,15 @@ fun AddAmountScreen(){
         Spacer(modifier = Modifier.height(15.dp))
 
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
+                // Earnings
                 DepositWithdrawCard(text = "Earnings", icon = Icons.Filled.ArrowForward,
                     height = (height/2)-2, width = ((screenWidth)/ 2)-12,
-                    boxColor = colorResource(id = R.color.primary), fontSize = 20, route = "earningsScreen")
+                    boxColor = colorResource(id = R.color.primary), fontSize = 20, navHostController = navHostController, route = "earningsScreen")
 
+                // Expenses
                 DepositWithdrawCard(text = "Expenses", icon = Icons.Filled.ArrowBack,
                     height = (height/2)-2, width = ((screenWidth)/ 2)-12,
-                    boxColor = colorResource(id = R.color.primary), fontSize = 20, route = "expensesScreen")
+                    boxColor = colorResource(id = R.color.primary), fontSize = 20, navHostController = navHostController, route = "expensesScreen")
             }
         }
 
