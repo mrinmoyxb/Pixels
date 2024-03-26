@@ -24,4 +24,10 @@ interface FinanceTableDao {
     @Query("SELECT *FROM FinanceTable WHERE isEarnings=0")
     fun getAllExpenses(): Flow<List<FinanceTable>>
 
+    @Query("SELECT SUM(amount) FROM FinanceTable WHERE isEarnings=1")
+    fun getTotalEarnings(): Flow<Double>
+
+    @Query("SELECT SUM(amount) FROM FinanceTable WHERE isEarnings=0")
+    fun getTotalExpenses(): Flow<Double>
+
 }
