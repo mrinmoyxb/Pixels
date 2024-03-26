@@ -10,11 +10,11 @@ import com.example.myapplication.View.HomeScreen.HomeScreen
 @Composable
 fun MainScreen(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "home_screen") {
-        composable(route = "home_screen"){
+    NavHost(navController = navController, startDestination = "homeScreen") {
+        composable(route = "homeScreen"){
             HomeScreen(navController)
         }
-        composable(route = "expenses_screen"){
+        composable(route = "expensesScreen"){
             AddExpensesScreen()
         }
     }

@@ -46,10 +46,10 @@ fun HomeScreen(navController: NavHostController){
             Column(modifier = Modifier.height(height.dp), verticalArrangement = Arrangement.SpaceBetween){
                 DepositWithdrawCard(text = "Deposit", icon = Icons.Filled.ArrowForward,
                     height = (height/2)-2, width = ((screenWidth - 90) / 2)-10,
-                    boxColor = colorResource(id = R.color.secondary), fontSize = 20, navController)
+                    boxColor = colorResource(id = R.color.secondary), fontSize = 20, navController, route = "")
                 DepositWithdrawCard(text = "Withdraw", icon = Icons.Filled.ArrowBack,
                     height = (height/2)-2, width = ((screenWidth - 90) / 2)-10,
-                    boxColor = colorResource(id = R.color.secondary), fontSize = 20, navController)
+                    boxColor = colorResource(id = R.color.secondary), fontSize = 20, navController, route = "expensesScreen")
             }
         }
             LazyColumn {

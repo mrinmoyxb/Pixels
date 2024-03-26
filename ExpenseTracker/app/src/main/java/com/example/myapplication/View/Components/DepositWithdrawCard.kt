@@ -1,5 +1,6 @@
 package com.example.myapplication.View.Components
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,11 +34,14 @@ import androidx.navigation.NavHostController
 import com.example.myapplication.R
 
 @Composable
-fun DepositWithdrawCard(text: String, icon: ImageVector, height: Int, width: Int, boxColor: Color, fontSize: Int, navHostController: NavHostController){
+fun DepositWithdrawCard(text: String, icon: ImageVector, height: Int, width: Int, boxColor: Color,
+                        fontSize: Int, navHostController: NavHostController, route: String){
+    val context = LocalContext.current
     Card(modifier = Modifier
         .height(height.dp)
         .width(width.dp)
-        .clickable { navHostController.navigate("expenses_screen") },
+        .clickable { navHostController.navigate(route)
+                   Toast.makeText(context,"Clicked", Toast.LENGTH_SHORT).show()},
         shape = RoundedCornerShape(18.dp),
         colors = CardDefaults.cardColors(boxColor)) {
         Box(modifier = Modifier
