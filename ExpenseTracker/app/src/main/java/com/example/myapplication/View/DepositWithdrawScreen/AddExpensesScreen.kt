@@ -48,7 +48,7 @@ fun AddExpensesScreen(){
             Spacer(modifier = Modifier.height(40.dp))
 
             // Heading
-            TextHeading(title = "Add your Expenses", fontSize = 32, fontWeight = FontWeight.Bold, color = Color.Black)
+            TextHeading(title = "Add your Expenses", fontSize = 35, fontWeight = FontWeight.Bold, color = Color.Black)
             Spacer(modifier = Modifier.height(25.dp))
 
             // Add amount
@@ -56,15 +56,15 @@ fun AddExpensesScreen(){
             CustomTextInput("Enter amount")
             Spacer(modifier = Modifier.height(10.dp))
 
+            // Expense type:
+            TextHeading(title = "Expense type", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
+            CustomDropDownMenu(options, "Select an expense type")
+            Spacer(modifier = Modifier.height(10.dp))
+
             // Enter description:
             TextHeading(title = "Description", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
             CustomTextInput("Write a short description...")
-            Spacer(modifier = Modifier.height(10.dp))
-
-            // Expense type:
-            TextHeading(title = "Expense type", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
-            CustomDropDownMenu(options)
-            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(30.dp))
 
             CustomButton(text = "Done", fontSize = 25, boxColor = colorResource(id = R.color.primary), textColor = Color.White)
         }

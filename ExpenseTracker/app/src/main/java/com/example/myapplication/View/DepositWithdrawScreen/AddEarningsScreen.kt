@@ -43,7 +43,7 @@ fun AddEarningsScreen(){
             Spacer(modifier = Modifier.height(40.dp))
 
             // Heading
-            TextHeading(title = "Add your Earnings", fontSize = 32, fontWeight = FontWeight.Bold, color = Color.Black)
+            TextHeading(title = "Add your Earnings", fontSize = 35, fontWeight = FontWeight.Bold, color = Color.Black)
             Spacer(modifier = Modifier.height(25.dp))
 
             // Add amount
@@ -52,17 +52,17 @@ fun AddEarningsScreen(){
             CustomTextInput("Enter amount")
             Spacer(modifier = Modifier.height(10.dp))
 
+            // Expense type(drop down menu):
+            TextHeading(title = "Earning type", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
+            Spacer(modifier = Modifier.height(4.dp))
+            CustomDropDownMenu(options, "Select an earning type")
+            Spacer(modifier = Modifier.height(10.dp))
+
             // Enter description:
             TextHeading(title = "Description", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
             Spacer(modifier = Modifier.height(4.dp))
             CustomTextInput("Write a short description...")
-            Spacer(modifier = Modifier.height(10.dp))
-
-            // Expense type(drop down menu):
-            TextHeading(title = "Expense type", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
-            Spacer(modifier = Modifier.height(4.dp))
-            CustomDropDownMenu(options)
-            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(30.dp))
 
             CustomButton(text = "Done", fontSize = 25, boxColor = colorResource(id = R.color.primary), textColor = Color.White)
         }

@@ -43,10 +43,10 @@ data class Item(val name: String, @DrawableRes val icon: Int)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomDropDownMenu(options: List<Item>){
+fun CustomDropDownMenu(options: List<Item>, heading: String){
     var isExpanded by remember{mutableStateOf(false)}
-    var deposit by remember{mutableStateOf("Select an expense type")}
-    var iconToDisplay by remember { mutableIntStateOf(R.drawable.bills) }
+    var deposit by remember{mutableStateOf(heading)}
+    var iconToDisplay by remember { mutableIntStateOf(R.drawable.expenses) }
 
     Box(
         modifier = Modifier
@@ -55,7 +55,7 @@ fun CustomDropDownMenu(options: List<Item>){
             .height(70.dp)
             .background(
                 color = colorResource(id = R.color.tertiary),
-                shape = RoundedCornerShape(20.dp)
+                shape = RoundedCornerShape(10.dp)
             )
     ) {
         ExposedDropdownMenuBox(expanded = isExpanded, onExpandedChange = { isExpanded = !isExpanded }) {
