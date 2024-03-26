@@ -25,6 +25,7 @@ import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import com.example.myapplication.R
 import com.example.myapplication.View.Components.DepositWithdrawCard
+import com.example.myapplication.View.Components.Item
 import com.example.myapplication.View.Components.SavingsHeading
 
 
@@ -46,7 +47,7 @@ fun HomeScreen(navController: NavHostController){
             Column(modifier = Modifier.height(height.dp), verticalArrangement = Arrangement.SpaceBetween){
                 DepositWithdrawCard(text = "Deposit", icon = Icons.Filled.ArrowForward,
                     height = (height/2)-2, width = ((screenWidth - 90) / 2)-10,
-                    boxColor = colorResource(id = R.color.secondary), fontSize = 20, navController, route = "")
+                    boxColor = colorResource(id = R.color.secondary), fontSize = 20, navController, route = "earningsScreen")
                 DepositWithdrawCard(text = "Withdraw", icon = Icons.Filled.ArrowBack,
                     height = (height/2)-2, width = ((screenWidth - 90) / 2)-10,
                     boxColor = colorResource(id = R.color.secondary), fontSize = 20, navController, route = "expensesScreen")
