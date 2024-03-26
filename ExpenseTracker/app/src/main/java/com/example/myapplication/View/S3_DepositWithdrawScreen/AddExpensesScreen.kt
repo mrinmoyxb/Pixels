@@ -1,4 +1,4 @@
-package com.example.myapplication.View.DepositWithdrawScreen
+package com.example.myapplication.View.S3_DepositWithdrawScreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -22,17 +22,20 @@ import com.example.myapplication.View.Components.TextHeading
 
 @Preview(showBackground = true)
 @Composable
-fun AddEarningsScreen(){
+fun AddExpensesScreen(){
 
     val options = listOf(
-        Item("Business Profits", R.drawable.profit),
-        Item("Capital Gains", R.drawable.gain),
-        Item("Commissions", R.drawable.commissions),
-        Item("Dividends", R.drawable.dividends),
-        Item("Interests", R.drawable.interest),
-        Item("Salary", R.drawable.salary),
-        Item("Wages", R.drawable.wages),
-        Item("Others", R.drawable.others),
+        Item("Bills", R.drawable.bills),
+        Item("Debt", R.drawable.debt),
+        Item("Entertainment", R.drawable.entertainment),
+        Item("Food", R.drawable.soup),
+        Item("Health Insurance", R.drawable.health),
+        Item("Housing", R.drawable.home),
+        Item("Personal Care", R.drawable.personal),
+        Item("Shopping", R.drawable.shopping),
+        Item("Transportation", R.drawable.plane),
+        Item("Utilities", R.drawable.utilities),
+
     )
     Column(modifier = Modifier
         .fillMaxSize()
@@ -43,24 +46,21 @@ fun AddEarningsScreen(){
             Spacer(modifier = Modifier.height(40.dp))
 
             // Heading
-            TextHeading(title = "Add your Earnings", fontSize = 35, fontWeight = FontWeight.Bold, color = Color.Black)
+            TextHeading(title = "Add your Expenses", fontSize = 35, fontWeight = FontWeight.Bold, color = Color.Black)
             Spacer(modifier = Modifier.height(25.dp))
 
             // Add amount
             TextHeading(title = "Amount", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
-            Spacer(modifier = Modifier.height(4.dp))
             CustomTextInput("Enter amount")
             Spacer(modifier = Modifier.height(10.dp))
 
-            // Expense type(drop down menu):
-            TextHeading(title = "Earning type", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
-            Spacer(modifier = Modifier.height(4.dp))
-            CustomDropDownMenu(options, "Select an earning type")
+            // Expense type:
+            TextHeading(title = "Expense type", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
+            CustomDropDownMenu(options, "Select an expense type")
             Spacer(modifier = Modifier.height(10.dp))
 
             // Enter description:
             TextHeading(title = "Description", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
-            Spacer(modifier = Modifier.height(4.dp))
             CustomTextInput("Write a short description...")
             Spacer(modifier = Modifier.height(30.dp))
 
