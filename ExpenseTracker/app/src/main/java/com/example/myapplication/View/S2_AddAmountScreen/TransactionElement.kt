@@ -36,116 +36,121 @@ import com.example.myapplication.R
 import com.example.myapplication.View.Components.Item
 import com.example.myapplication.ViewModel.AddAmountViewModel.AddAmountViewModel
 
-@Preview(showBackground = true)
 @Composable
-fun TransactionElement(/*transaction: List<FinanceTable>, viewModel: AddAmountViewModel*/) {
-    val value: Int = 1
-    val type: String = "Salary"
+fun TransactionElement(transactionsList: List<FinanceTable>, viewModel: AddAmountViewModel) {
 
-    val transactionSymbol: String = when (value) {
-        1 -> "+"
-        0 -> "-"
-        else -> ""
-    }
+    Column {
+        transactionsList.forEach {transaction ->
+            val transactionSymbol: String = when (transaction.isEarnings) {
+                1 -> "+"
+                0 -> "-"
+                else -> ""
+            }
 
-    val transactionIcon: Int = when (type) {
-        "Business Profits" -> R.drawable.profit
-        "Capital Gains" -> R.drawable.gain
-        "Commissions" -> R.drawable.commissions
-        "Dividends" -> R.drawable.dividends
-        "Interests" -> R.drawable.interest
-        "Salary" -> R.drawable.salary
-        "Wages" -> R.drawable.wages
-        "Others" -> R.drawable.others
-        "Bills" -> R.drawable.bills
-        "Debt" -> R.drawable.debt
-        "Entertainment" -> R.drawable.entertainment
-        "Food" -> R.drawable.soup
-        "Health Insurance" -> R.drawable.health
-        "Housing" -> R.drawable.home
-        "Personal Care" -> R.drawable.personal
-        "Shopping" -> R.drawable.shopping
-        "Transportation" -> R.drawable.plane
-        "Utilities" -> R.drawable.utilities
-        else -> {
-            0
-        }
-    }
-    //Column {
-    //transaction.forEach {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(100.dp)
-            .background(Color.Transparent),
-        shape = RoundedCornerShape(10.dp),
-        colors = CardDefaults.cardColors(colorResource(id = R.color.secondary))
-    )
-    {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp)
-        ) {
-            LazyRow(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                item {
-                    Column(
-                        modifier = Modifier.fillMaxHeight(),
-                        verticalArrangement = Arrangement.Center
+            val transactionIcon: Int = when (transaction.type) {
+                "Business Profits" -> R.drawable.profit
+                "Capital Gains" -> R.drawable.gain
+                "Commissions" -> R.drawable.commissions
+                "Dividends" -> R.drawable.dividends
+                "Interests" -> R.drawable.interest
+                "Salary" -> R.drawable.salary
+                "Wages" -> R.drawable.wages
+                "Others" -> R.drawable.others
+                "Bills" -> R.drawable.bills
+                "Debt" -> R.drawable.debt
+                "Entertainment" -> R.drawable.entertainment
+                "Food" -> R.drawable.soup
+                "Health Insurance" -> R.drawable.health
+                "Housing" -> R.drawable.home
+                "Personal Care" -> R.drawable.personal
+                "Shopping" -> R.drawable.shopping
+                "Transportation" -> R.drawable.plane
+                "Utilities" -> R.drawable.utilities
+                else -> {
+                    0
+                }
+            }
+
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(100.dp)
+                    .background(Color.Transparent),
+                shape = RoundedCornerShape(10.dp),
+                colors = CardDefaults.cardColors(colorResource(id = R.color.secondary))
+            )
+            {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp)
+                ) {
+                    LazyRow(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Box(
-                            modifier = Modifier.clip(CircleShape).size(65.dp)
-                                .background(Color.White).padding(12.dp),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Icon(
-                                painter = painterResource(id = transactionIcon),
-                                contentDescription = ""
-                            )
-                        }
+                        item {
 
-                    }
-                    Spacer(modifier = Modifier.width(12.dp))
+                            // icon
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Box(
+                                    modifier = Modifier.clip(CircleShape).size(65.dp)
+                                        .background(Color.White).padding(12.dp),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Icon(
+                                        painter = painterResource(id = transactionIcon),
+                                        contentDescription = ""
+                                    )
+                                }
 
-                    Column(
-                        modifier = Modifier.width(190.dp).fillMaxHeight(),
-                        verticalArrangement = Arrangement.Center
-                    ) {
-                        Text(
-                            "Business Profits", fontSize = TextConstants.TransactionHeading.size.sp,
-                            fontWeight = FontWeight.SemiBold, color = Color.White
-                        )
-                        Text("12/10/2024", color = Color.White)
-                    }
-                    Spacer(modifier = Modifier.width(8.dp))
+                            }
+                            Spacer(modifier = Modifier.width(12.dp))
 
-                    Column(
-                        modifier = Modifier.fillMaxHeight(),
-                        verticalArrangement = Arrangement.Center
-                    )
-                    {
-                        Row() {
-                            Text(
-                                "$transactionSymbol ",
-                                fontSize = TextConstants.Amount.size.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                color = Color.Green
+                            // Transaction Type and Date of Transaction
+                            Column(
+                                modifier = Modifier.width(190.dp).fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Text(
+                                    transaction.type,
+                                    fontSize = TextConstants.TransactionHeading.size.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = Color.White
+                                )
+                                Text(transaction.dateAdded.toString(), color = Color.White)
+                            }
+                            Spacer(modifier = Modifier.width(8.dp))
+
+                            // Amount
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
                             )
-                            Text(
-                                "10000.92",
-                                fontSize = TextConstants.Amount.size.sp,
-                                color = Color.White
-                            )
+                            {
+                                Row() {
+                                    Text(
+                                        "$transactionSymbol ",
+                                        fontSize = TextConstants.Amount.size.sp,
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = Color.Green
+                                    )
+                                    Text(
+                                        transaction.amount.toString(),
+                                        fontSize = TextConstants.Amount.size.sp,
+                                        color = Color.White
+                                    )
+                                }
+                            }
                         }
                     }
                 }
+
+
             }
         }
-
-        //}
-        //}
     }
 }
