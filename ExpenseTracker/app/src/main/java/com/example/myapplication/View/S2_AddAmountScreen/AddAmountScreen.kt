@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,9 +43,9 @@ fun AddAmountScreen(navHostController: NavHostController){
                 fontWeight = FontWeight.SemiBold, color = Color.Black
             )
         }
-        Spacer(modifier = Modifier.height(15.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
 
                 // Earnings
                 DepositWithdrawCard(text = "Earnings", icon = painterResource(id = R.drawable.downward_arrow),
@@ -56,6 +57,21 @@ fun AddAmountScreen(navHostController: NavHostController){
                     height = (height/2)-2, width = ((screenWidth)/ 2)-12,
                     boxColor = colorResource(id = R.color.primary), fontSize = 20, navHostController = navHostController, route = "expensesScreen")
             }
+        Spacer(modifier = Modifier.height(15.dp))
+
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically) {
+            // Sub Heading
+            TextHeading(
+                title = "Last Added", fontSize = TextConstants.SubHeading.size,
+                fontWeight = FontWeight.SemiBold, color = Color.Black
+            )
         }
+
+        LazyColumn(modifier = Modifier.fillMaxSize()){
+
+        }
+
+    }
 
 }
