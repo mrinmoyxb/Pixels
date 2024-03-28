@@ -19,10 +19,11 @@ import com.example.myapplication.View.Components.CustomDropDownMenu
 import com.example.myapplication.View.Components.CustomTextInput
 import com.example.myapplication.View.Components.Item
 import com.example.myapplication.View.Components.TextHeading
+import com.example.myapplication.ViewModel.AddAmountViewModel.AddAmountViewModel
 
-@Preview(showBackground = true)
+
 @Composable
-fun AddEarningsScreen(){
+fun AddEarningsScreen(viewModel: AddAmountViewModel){
 
     val options = listOf(
         Item("Business Profits", R.drawable.profit),

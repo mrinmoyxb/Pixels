@@ -91,7 +91,7 @@ fun TransactionElement(transactionsList: List<FinanceTable>, viewModel: AddAmoun
                     ) {
                         item {
 
-                            // icon
+                            // Icon
                             Column(
                                 modifier = Modifier.fillMaxHeight(),
                                 verticalArrangement = Arrangement.Center
