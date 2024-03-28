@@ -37,7 +37,7 @@ import com.example.myapplication.View.Components.Item
 import com.example.myapplication.ViewModel.AddAmountViewModel.AddAmountViewModel
 
 @Composable
-fun TransactionElement(transactionsList: List<FinanceTable>, viewModel: AddAmountViewModel) {
+fun TransactionElements(transactionsList: List<FinanceTable>) {
 
     Column {
         transactionsList.forEach {transaction ->
@@ -45,6 +45,12 @@ fun TransactionElement(transactionsList: List<FinanceTable>, viewModel: AddAmoun
                 1 -> "+"
                 0 -> "-"
                 else -> ""
+            }
+
+            val transactionColor: Color = when (transaction.isEarnings) {
+                1 -> Color.Green
+                0 -> Color.Red
+                else -> Color.White
             }
 
             val transactionIcon: Int = when (transaction.type) {
@@ -76,7 +82,7 @@ fun TransactionElement(transactionsList: List<FinanceTable>, viewModel: AddAmoun
                     .fillMaxWidth()
                     .height(100.dp)
                     .background(Color.Transparent),
-                shape = RoundedCornerShape(10.dp),
+                shape = RoundedCornerShape(18.dp),
                 colors = CardDefaults.cardColors(colorResource(id = R.color.secondary))
             )
             {
@@ -151,6 +157,7 @@ fun TransactionElement(transactionsList: List<FinanceTable>, viewModel: AddAmoun
 
 
             }
+            Spacer(modifier = Modifier.height(5.dp))
         }
     }
 }

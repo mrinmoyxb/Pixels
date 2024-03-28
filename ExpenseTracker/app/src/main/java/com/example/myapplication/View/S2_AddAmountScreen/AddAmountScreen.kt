@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,12 +24,15 @@ import com.example.myapplication.Model.TextConstants
 import com.example.myapplication.R
 import com.example.myapplication.View.Components.DepositWithdrawCard
 import com.example.myapplication.View.Components.TextHeading
+import com.example.myapplication.ViewModel.AddAmountViewModel.AddAmountViewModel
 
 @Composable
-fun AddAmountScreen(navHostController: NavHostController){
+fun AddAmountScreen(navHostController: NavHostController, viewModel: AddAmountViewModel){
     val config = LocalConfiguration.current
     val screenWidth = config.screenWidthDp
     val height: Int = 210
+
+    val transactionList = viewModel.getAllTransactions.collectAsState(initial = emptyList())
 
     Column(modifier = Modifier
         .fillMaxSize()
@@ -69,7 +73,10 @@ fun AddAmountScreen(navHostController: NavHostController){
         }
 
         LazyColumn(modifier = Modifier.fillMaxSize()){
-
+            item{
+                TransactionElements(transactionsList = transactionList.value)
+            }
+            
         }
 
     }

@@ -194,7 +194,7 @@ fun AddEarningsScreen(viewModel: AddAmountViewModel){
             Card(modifier = Modifier
                 .fillMaxWidth()
                 .height(80.dp)
-                .clickable { viewModel.addExpenseTransaction(amount = amount.toDouble(), type = earningType, description = description,
+                .clickable { viewModel.addEarningTransaction(amount = amount.toDouble(), type = earningType, description = description,
                     formattedDate = formattedDate, dateAddedInMillis = currentMillis)}
                 .background(Color.Transparent),
                 shape = RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(colorResource(id = R.color.primary))){

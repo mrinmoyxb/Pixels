@@ -32,7 +32,7 @@ fun MainScreen(){
 
         // Screen 3:
         composable(route = "addAmountScreen"){
-            AddAmountScreen(navController)
+            AddAmountScreen(navController, viewModel)
         }
     }
 }
