@@ -11,15 +11,15 @@ import java.sql.Date
 
 class AddAmountViewModel(private val financeDao: FinanceTableDao): ViewModel() {
 
-    fun addEarningTransaction(amount: Double, type: String, description: String, dateAdded: Date){
+    fun addEarningTransaction(amount: Double, type: String, description: String, formattedDate: String, dateAddedInMillis: Long){
         viewModelScope.launch{
-            financeDao.insertAmount(FinanceTable(amount = amount,type = type, description = description, isEarnings = 1, dateAdded = dateAdded))
+            financeDao.insertAmount(FinanceTable(amount = amount,type = type, description = description, isEarnings = 1, formattedDate = formattedDate, dateAddedInMillis = dateAddedInMillis))
         }
     }
 
-    fun addExpenseTransaction(amount: Double, type: String, description: String, dateAdded: Date){
+    fun addExpenseTransaction(amount: Double, type: String, description: String, formattedDate: String, dateAddedInMillis: Long){
         viewModelScope.launch {
-            financeDao.insertAmount(FinanceTable(amount = amount, type = type, description = description, isEarnings = 0, dateAdded = dateAdded))
+            financeDao.insertAmount(FinanceTable(amount = amount, type = type, description = description, isEarnings = 0, formattedDate = formattedDate, dateAddedInMillis = dateAddedInMillis))
         }
     }
 

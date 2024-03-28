@@ -121,7 +121,7 @@ fun TransactionElement(transactionsList: List<FinanceTable>, viewModel: AddAmoun
                                     fontWeight = FontWeight.SemiBold,
                                     color = Color.White
                                 )
-                                Text(transaction.dateAdded.toString(), color = Color.White)
+                                Text(transaction.formattedDate, color = Color.White)
                             }
                             Spacer(modifier = Modifier.width(8.dp))
 

@@ -47,7 +47,9 @@ import com.example.myapplication.View.Components.CustomTextInput
 import com.example.myapplication.View.Components.Item
 import com.example.myapplication.View.Components.TextHeading
 import com.example.myapplication.ViewModel.AddAmountViewModel.AddAmountViewModel
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -78,7 +80,9 @@ fun AddExpensesScreen(viewModel: AddAmountViewModel){
     var iconToDisplay by remember { mutableIntStateOf(R.drawable.expenses) }
 
     // date
-    val currentDateTime = remember { Calendar.getInstance().time }
+    val currentMillis = System.currentTimeMillis()
+    val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    val formattedDate = simpleDateFormat.format(remember { Calendar.getInstance().time })
 
     // Screen
     Column(modifier = Modifier
@@ -193,7 +197,8 @@ fun AddExpensesScreen(viewModel: AddAmountViewModel){
             Card(modifier = Modifier
                 .fillMaxWidth()
                 .height(80.dp)
-                //.clickable { viewModel.addExpenseTransaction(amount = amount.toDouble(), type = expenseType, description = description, )}
+                .clickable { viewModel.addExpenseTransaction(amount = amount.toDouble(), type = expenseType, description = description,
+                    formattedDate = formattedDate, dateAddedInMillis = currentMillis)}
                 .background(Color.Transparent),
                 shape = RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(colorResource(id = R.color.primary))){
                 Box(modifier = Modifier.fillMaxSize().padding(10.dp), contentAlignment = Alignment.Center){
