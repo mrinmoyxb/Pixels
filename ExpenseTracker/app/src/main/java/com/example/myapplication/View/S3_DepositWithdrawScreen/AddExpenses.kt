@@ -37,13 +37,9 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
-import com.example.myapplication.View.Components.CustomButton
-import com.example.myapplication.View.Components.CustomDropDownMenu
-import com.example.myapplication.View.Components.CustomTextInput
 import com.example.myapplication.View.Components.Item
 import com.example.myapplication.View.Components.TextHeading
 import com.example.myapplication.ViewModel.AddAmountViewModel.AddAmountViewModel
@@ -54,26 +50,28 @@ import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddEarningsScreen(viewModel: AddAmountViewModel){
+fun AddExpensesScreen(viewModel: AddAmountViewModel){
 
     val options = listOf(
-        Item("Business Profits", R.drawable.profit),
-        Item("Capital Gains", R.drawable.gain),
-        Item("Commissions", R.drawable.commissions),
-        Item("Dividends", R.drawable.dividends),
-        Item("Interests", R.drawable.interest),
-        Item("Salary", R.drawable.salary),
-        Item("Wages", R.drawable.wages),
-        Item("Others", R.drawable.others),
+        Item("Bills", R.drawable.bills),
+        Item("Debt", R.drawable.debt),
+        Item("Entertainment", R.drawable.entertainment),
+        Item("Food", R.drawable.soup),
+        Item("Health Insurance", R.drawable.health),
+        Item("Housing", R.drawable.home),
+        Item("Personal Care", R.drawable.personal),
+        Item("Shopping", R.drawable.shopping),
+        Item("Transportation", R.drawable.plane),
+        Item("Utilities", R.drawable.utilities),
     )
 
     // for input boxes
-    var amount by remember{ mutableStateOf("") }
-    var description by remember{ mutableStateOf("") }
+    var amount by remember{mutableStateOf("")}
+    var description by remember{ mutableStateOf("")}
 
     // for drop down box
-    var isExpanded by remember{ mutableStateOf(false) }
-    var earningType by remember{ mutableStateOf("Select an earning type") }
+    var isExpanded by remember{mutableStateOf(false)}
+    var expenseType by remember{ mutableStateOf("Select an expense type")}
     var iconToDisplay by remember { mutableIntStateOf(R.drawable.expenses) }
 
     // date
@@ -81,6 +79,7 @@ fun AddEarningsScreen(viewModel: AddAmountViewModel){
     val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     val formattedDate = simpleDateFormat.format(remember { Calendar.getInstance().time })
 
+    // Screen
     Column(modifier = Modifier
         .fillMaxSize()
         .background(Color.White)
@@ -90,17 +89,16 @@ fun AddEarningsScreen(viewModel: AddAmountViewModel){
             Spacer(modifier = Modifier.height(40.dp))
 
             // Heading
-            TextHeading(title = "Add your Earnings", fontSize = 35, fontWeight = FontWeight.Bold, color = Color.Black)
+            TextHeading(title = "Add your Expenses", fontSize = 35, fontWeight = FontWeight.Bold, color = Color.Black)
             Spacer(modifier = Modifier.height(25.dp))
 
             // Add amount
             TextHeading(title = "Amount", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
-            Spacer(modifier = Modifier.height(4.dp))
             TextField(value = amount, onValueChange = {amount = it},
                 placeholder = { Text("Enter the amount", fontSize =  20.sp, color = Color.Black, fontWeight = FontWeight.Light) },
                 modifier = Modifier.fillMaxWidth().height(70.dp),
                 shape = RoundedCornerShape(10.dp),
-                textStyle = TextStyle(fontSize = 25.sp, color = Color.Black, fontWeight = FontWeight.SemiBold),
+                textStyle = TextStyle(fontSize = 25.sp, color = Color.Black, fontWeight = FontWeight.Medium),
                 maxLines = 1,
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = colorResource(id = R.color.tertiary),
@@ -110,9 +108,8 @@ fun AddEarningsScreen(viewModel: AddAmountViewModel){
             )
             Spacer(modifier = Modifier.height(10.dp))
 
-            // Earning type(drop down menu):
-            TextHeading(title = "Earning type", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
-            Spacer(modifier = Modifier.height(4.dp))
+            // Expense type drop down box:
+            TextHeading(title = "Expense type", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
             Box(
                 modifier = Modifier
                     .clip(RoundedCornerShape(10.dp))
@@ -135,13 +132,13 @@ fun AddEarningsScreen(viewModel: AddAmountViewModel){
                             modifier = Modifier.size(30.dp)
                         )
                         TextField(
-                            value = earningType,
+                            value = expenseType,
                             onValueChange = {},
                             modifier = Modifier
                                 .menuAnchor()
                                 .fillMaxSize(),
                             readOnly = true,
-                            textStyle = TextStyle(fontSize = 23.sp, fontWeight = FontWeight.Light),
+                            textStyle = TextStyle(fontSize = 23.sp, fontWeight = FontWeight.Medium),
                             colors = TextFieldDefaults.textFieldColors(
                                 containerColor = Color.Transparent,
                                 cursorColor = Color.Black,
@@ -163,7 +160,7 @@ fun AddEarningsScreen(viewModel: AddAmountViewModel){
                                 },
 
                                 onClick = {
-                                    earningType = item.name
+                                    expenseType = item.name
                                     iconToDisplay = item.icon
                                     isExpanded = false
                                 }
@@ -177,12 +174,11 @@ fun AddEarningsScreen(viewModel: AddAmountViewModel){
 
             // Enter description:
             TextHeading(title = "Description", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
-            Spacer(modifier = Modifier.height(4.dp))
             TextField(value = description, onValueChange = {description = it},
                 placeholder = {Text("Write a short description...", fontSize =  20.sp, color = Color.Black, fontWeight = FontWeight.Light)},
                 modifier = Modifier.fillMaxWidth().height(70.dp),
                 shape = RoundedCornerShape(10.dp),
-                textStyle = TextStyle(fontSize = 25.sp, color = Color.Black, fontWeight = FontWeight.SemiBold),
+                textStyle = TextStyle(fontSize = 25.sp, color = Color.Black, fontWeight = FontWeight.Medium),
                 maxLines = 1,
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = colorResource(id = R.color.tertiary),
@@ -191,15 +187,16 @@ fun AddEarningsScreen(viewModel: AddAmountViewModel){
                 )
             )
             Spacer(modifier = Modifier.height(30.dp))
+
+            // Save Button:
             Card(modifier = Modifier
                 .fillMaxWidth()
                 .height(80.dp)
-                .clickable { viewModel.addEarningTransaction(amount = amount.toDouble(), type = earningType, description = description,
-                    formattedDate = formattedDate, dateAddedInMillis = currentMillis)}
+                .clickable { viewModel.addExpenseTransaction(amount = amount.toDouble(), type = expenseType, description = description, formattedDate = formattedDate, dateAddedInMillis = currentMillis)}
                 .background(Color.Transparent),
                 shape = RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(colorResource(id = R.color.primary))){
                 Box(modifier = Modifier.fillMaxSize().padding(10.dp), contentAlignment = Alignment.Center){
-                    Text("Add as earning", color = Color.White, fontSize = 25.sp, fontWeight = FontWeight.SemiBold)
+                    Text("Add as expense", color = Color.White, fontSize = 25.sp, fontWeight = FontWeight.SemiBold)
                 }
             }
         }

@@ -47,9 +47,6 @@ fun DepositWithdrawCard(text: String, icon: Painter, height: Int, width: Int, bo
         .width(width.dp)
         .clickable {
             navHostController.navigate(route)
-            Toast
-                .makeText(context, "Clicked", Toast.LENGTH_SHORT)
-                .show()
         },
         shape = RoundedCornerShape(18.dp),
         colors = CardDefaults.cardColors(boxColor)) {

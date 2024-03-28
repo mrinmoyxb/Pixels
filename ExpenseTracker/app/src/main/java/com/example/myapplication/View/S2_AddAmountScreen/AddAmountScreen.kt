@@ -24,6 +24,7 @@ import com.example.myapplication.Model.TextConstants
 import com.example.myapplication.R
 import com.example.myapplication.View.Components.DepositWithdrawCard
 import com.example.myapplication.View.Components.TextHeading
+import com.example.myapplication.View.Components.TransactionElements
 import com.example.myapplication.ViewModel.AddAmountViewModel.AddAmountViewModel
 
 @Composable
@@ -32,7 +33,7 @@ fun AddAmountScreen(navHostController: NavHostController, viewModel: AddAmountVi
     val screenWidth = config.screenWidthDp
     val height: Int = 210
 
-    val transactionList = viewModel.getAllTransactions.collectAsState(initial = emptyList())
+    val transactionList = viewModel.getAllTransactionsByDate.collectAsState(initial = emptyList())
 
     Column(modifier = Modifier
         .fillMaxSize()
@@ -44,7 +45,7 @@ fun AddAmountScreen(navHostController: NavHostController, viewModel: AddAmountVi
             // Heading
             TextHeading(
                 title = "Add", fontSize = TextConstants.Heading.size,
-                fontWeight = FontWeight.SemiBold, color = Color.Black
+                fontWeight = FontWeight.Bold, color = Color.Black
             )
         }
         Spacer(modifier = Modifier.height(10.dp))
@@ -63,14 +64,15 @@ fun AddAmountScreen(navHostController: NavHostController, viewModel: AddAmountVi
             }
         Spacer(modifier = Modifier.height(15.dp))
 
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center,
+        // Sub Heading
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically) {
-            // Sub Heading
             TextHeading(
                 title = "Last Added", fontSize = TextConstants.SubHeading.size,
                 fontWeight = FontWeight.SemiBold, color = Color.Black
             )
         }
+        Spacer(modifier = Modifier.height(5.dp))
 
         LazyColumn(modifier = Modifier.fillMaxSize()){
             item{

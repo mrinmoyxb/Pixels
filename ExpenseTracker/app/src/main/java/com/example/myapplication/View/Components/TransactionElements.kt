@@ -1,4 +1,4 @@
-package com.example.myapplication.View.S2_AddAmountScreen
+package com.example.myapplication.View.Components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -27,14 +27,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.Model.Database.FinanceTable
 import com.example.myapplication.Model.TextConstants
 import com.example.myapplication.R
-import com.example.myapplication.View.Components.Item
-import com.example.myapplication.ViewModel.AddAmountViewModel.AddAmountViewModel
 
 @Composable
 fun TransactionElements(transactionsList: List<FinanceTable>) {
@@ -142,7 +139,7 @@ fun TransactionElements(transactionsList: List<FinanceTable>) {
                                         "$transactionSymbol ",
                                         fontSize = TextConstants.Amount.size.sp,
                                         fontWeight = FontWeight.SemiBold,
-                                        color = Color.Green
+                                        color = transactionColor
                                     )
                                     Text(
                                         transaction.amount.toString(),
