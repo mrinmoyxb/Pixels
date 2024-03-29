@@ -7,4 +7,8 @@
     <color name="primary">#FF2924FC</color>
     <color name="secondary">#FF333333</color>
     <color name ="tertiary">#EFE9E9</color>
+
+    <color name="black_primary">#302436</color>
+    <color name="purple_secondary">#665ced</color>
+    <color name="green_tertiary">#9fd212</color>
 </resources>

@@ -10,13 +10,18 @@ import com.example.myapplication.View.S3_DepositWithdrawScreen.AddEarningsScreen
 import com.example.myapplication.View.S3_DepositWithdrawScreen.AddExpensesScreen
 import com.example.myapplication.View.S1_HomeScreen.HomeScreen
 import com.example.myapplication.View.S2_AddAmountScreen.AddAmountScreen
+import com.example.myapplication.View.S4_AnalyticsScreen.AnalyticsScreen
 import com.example.myapplication.ViewModel.AddAmountViewModel.AddAmountViewModel
+import com.example.myapplication.ViewModel.AnalyticsViewModel.AnalyticsViewModel
 
 @Composable
 fun MainScreen(){
+
     val context =  LocalContext.current
     val viewModel = AddAmountViewModel(TransactionDatabase.getInstance(context).financeDao())
+    val analyticsViewModel = AnalyticsViewModel(TransactionDatabase.getInstance(context).financeDao())
     val navController = rememberNavController()
+
     NavHost(navController = navController, startDestination = "homeScreen") {
         composable(route = "homeScreen"){
             HomeScreen(navController)
@@ -33,6 +38,11 @@ fun MainScreen(){
         // Screen 3:
         composable(route = "addAmountScreen"){
             AddAmountScreen(navController, viewModel)
+        }
+
+        // Screen 2:
+        composable(route = "analyticsScreen"){
+            AnalyticsScreen(navController, analyticsViewModel)
         }
     }
 }

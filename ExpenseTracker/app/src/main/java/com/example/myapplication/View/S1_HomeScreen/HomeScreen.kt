@@ -36,6 +36,9 @@ fun HomeScreen(navController: NavHostController){
         Button(onClick = { navController.navigate("addAmountScreen")}) {
             Text("Click Here")
         }
+        Button(onClick = { navController.navigate("analyticsScreen")}) {
+            Text("Click Here again")
+        }
             LazyColumn {
                 item {
 

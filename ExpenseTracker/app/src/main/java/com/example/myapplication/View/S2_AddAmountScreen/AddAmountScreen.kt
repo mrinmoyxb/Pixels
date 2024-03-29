@@ -1,5 +1,6 @@
 package com.example.myapplication.View.S2_AddAmountScreen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -40,6 +41,7 @@ fun AddAmountScreen(navHostController: NavHostController, viewModel: AddAmountVi
 
     Column(modifier = Modifier
         .fillMaxSize()
+        .background(colorResource(id = R.color.black_primary))
         .padding(10.dp)){
 
         Spacer(modifier = Modifier.height(40.dp))
@@ -48,7 +50,7 @@ fun AddAmountScreen(navHostController: NavHostController, viewModel: AddAmountVi
             // Heading
             TextHeading(
                 title = "Add", fontSize = TextConstants.Heading.size,
-                fontWeight = FontWeight.Bold, color = Color.Black
+                fontWeight = FontWeight.Bold, color = Color.White
             )
         }
         Spacer(modifier = Modifier.height(10.dp))
@@ -58,12 +60,12 @@ fun AddAmountScreen(navHostController: NavHostController, viewModel: AddAmountVi
                 // Earnings
                 DepositWithdrawCard(text = "Earnings", icon = painterResource(id = R.drawable.downward_arrow),
                     height = (height/2)-2, width = ((screenWidth)/ 2)-12,
-                    boxColor = colorResource(id = R.color.primary), fontSize = 25, navHostController = navHostController, route = "earningsScreen")
+                    boxColor = colorResource(id = R.color.green_tertiary), fontSize = 25, navHostController = navHostController, route = "earningsScreen")
 
                 // Expenses
                 DepositWithdrawCard(text = "Expenses", icon = painterResource(id = R.drawable.upward_arrow),
                     height = (height/2)-2, width = ((screenWidth)/ 2)-12,
-                    boxColor = colorResource(id = R.color.primary), fontSize = 25, navHostController = navHostController, route = "expensesScreen")
+                    boxColor = colorResource(id = R.color.purple_secondary), fontSize = 25, navHostController = navHostController, route = "expensesScreen")
             }
         Spacer(modifier = Modifier.height(15.dp))
 
@@ -72,11 +74,11 @@ fun AddAmountScreen(navHostController: NavHostController, viewModel: AddAmountVi
             verticalAlignment = Alignment.CenterVertically) {
             TextHeading(
                 title = "Last 10 Transactions", fontSize = TextConstants.SubHeading.size,
-                fontWeight = FontWeight.Normal, color = Color.Black
+                fontWeight = FontWeight.Normal, color = Color.White
             )
             TextHeading(
                 title = "VIEW ALL", fontSize = TextConstants.SubHeading.size,
-                fontWeight = FontWeight.SemiBold, color = Color.Black
+                fontWeight = FontWeight.SemiBold, color = Color.White
             )
         }
         Spacer(modifier = Modifier.height(5.dp))

@@ -80,7 +80,7 @@ fun TransactionElements(transactionsList: List<FinanceTable>) {
                     .height(100.dp)
                     .background(Color.Transparent),
                 shape = RoundedCornerShape(18.dp),
-                colors = CardDefaults.cardColors(colorResource(id = R.color.secondary))
+                colors = CardDefaults.cardColors(colorResource(id = R.color.purple_secondary))
             )
             {
                 Box(

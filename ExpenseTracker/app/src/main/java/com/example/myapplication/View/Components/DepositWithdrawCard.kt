@@ -66,8 +66,8 @@ fun DepositWithdrawCard(text: String, icon: Painter, height: Int, width: Int, bo
                         fontWeight = FontWeight.SemiBold
                     )
                     Spacer(modifier = Modifier.width(5.dp))
-                    Box(modifier = Modifier.clip(CircleShape).size(20.dp).background(Color.White).padding(2.dp), contentAlignment = Alignment.Center) {
-                        Icon(painter = icon, contentDescription = "")
+                    Box(modifier = Modifier.clip(CircleShape).size(20.dp).background(Color.Black).padding(2.dp), contentAlignment = Alignment.Center) {
+                        Icon(painter = icon, contentDescription = "", tint = Color.White)
                     }
                 }
             }
