@@ -58,25 +58,25 @@ fun AddAmountScreen(navHostController: NavHostController, viewModel: AddAmountVi
                 // Earnings
                 DepositWithdrawCard(text = "Earnings", icon = painterResource(id = R.drawable.downward_arrow),
                     height = (height/2)-2, width = ((screenWidth)/ 2)-12,
-                    boxColor = colorResource(id = R.color.primary), fontSize = 20, navHostController = navHostController, route = "earningsScreen")
+                    boxColor = colorResource(id = R.color.primary), fontSize = 25, navHostController = navHostController, route = "earningsScreen")
 
                 // Expenses
                 DepositWithdrawCard(text = "Expenses", icon = painterResource(id = R.drawable.upward_arrow),
                     height = (height/2)-2, width = ((screenWidth)/ 2)-12,
-                    boxColor = colorResource(id = R.color.primary), fontSize = 20, navHostController = navHostController, route = "expensesScreen")
+                    boxColor = colorResource(id = R.color.primary), fontSize = 25, navHostController = navHostController, route = "expensesScreen")
             }
         Spacer(modifier = Modifier.height(15.dp))
 
         // Sub Heading
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start,
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically) {
             TextHeading(
                 title = "Last 10 Transactions", fontSize = TextConstants.SubHeading.size,
                 fontWeight = FontWeight.Normal, color = Color.Black
             )
             TextHeading(
-                title = "View All", fontSize = TextConstants.SubHeading.size,
-                fontWeight = FontWeight.Normal, color = Color.Black
+                title = "VIEW ALL", fontSize = TextConstants.SubHeading.size,
+                fontWeight = FontWeight.SemiBold, color = Color.Black
             )
         }
         Spacer(modifier = Modifier.height(5.dp))
