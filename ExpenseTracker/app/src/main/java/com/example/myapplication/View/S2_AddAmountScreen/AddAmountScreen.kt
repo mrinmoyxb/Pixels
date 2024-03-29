@@ -69,7 +69,7 @@ fun AddAmountScreen(navHostController: NavHostController, viewModel: AddAmountVi
             verticalAlignment = Alignment.CenterVertically) {
             TextHeading(
                 title = "Last Added", fontSize = TextConstants.SubHeading.size,
-                fontWeight = FontWeight.SemiBold, color = Color.Black
+                fontWeight = FontWeight.Medium, color = Color.Black
             )
         }
         Spacer(modifier = Modifier.height(5.dp))
