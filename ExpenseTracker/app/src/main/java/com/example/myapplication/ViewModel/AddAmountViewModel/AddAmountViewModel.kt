@@ -27,4 +27,6 @@ class AddAmountViewModel(private val financeDao: FinanceTableDao): ViewModel() {
 
     var getAllTransactionsByDate: Flow<List<FinanceTable>> = financeDao.getAllTransactionsByDate()
 
+    var getLastTenTransactions: Flow<List<FinanceTable>> = financeDao.getLastTenTransactions()
+
 }

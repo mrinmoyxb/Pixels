@@ -20,6 +20,9 @@ interface FinanceTableDao {
     @Query("SELECT *FROM FinanceTable ORDER BY dateAddedInMillis DESC")
     fun getAllTransactionsByDate(): Flow<List<FinanceTable>>
 
+    @Query("SELECT *FROM FinanceTable ORDER BY dateAddedInMillis DESC LIMIT 10")
+    fun getLastTenTransactions(): Flow<List<FinanceTable>>
+
     @Query("SELECT *FROM FinanceTable WHERE isEarnings=1")
     fun getAllEarnings(): Flow<List<FinanceTable>>
 

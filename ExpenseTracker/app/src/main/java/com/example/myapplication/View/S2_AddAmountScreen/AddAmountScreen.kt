@@ -20,12 +20,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.myapplication.Model.Database.FinanceTable
 import com.example.myapplication.Model.TextConstants
 import com.example.myapplication.R
 import com.example.myapplication.View.Components.DepositWithdrawCard
 import com.example.myapplication.View.Components.TextHeading
 import com.example.myapplication.View.Components.TransactionElements
 import com.example.myapplication.ViewModel.AddAmountViewModel.AddAmountViewModel
+import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun AddAmountScreen(navHostController: NavHostController, viewModel: AddAmountViewModel){
@@ -34,6 +36,7 @@ fun AddAmountScreen(navHostController: NavHostController, viewModel: AddAmountVi
     val height: Int = 210
 
     val transactionList = viewModel.getAllTransactionsByDate.collectAsState(initial = emptyList())
+    var lastTenTransactions = viewModel.getLastTenTransactions.collectAsState(initial = emptyList())
 
     Column(modifier = Modifier
         .fillMaxSize()
@@ -68,15 +71,19 @@ fun AddAmountScreen(navHostController: NavHostController, viewModel: AddAmountVi
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically) {
             TextHeading(
-                title = "Last Added", fontSize = TextConstants.SubHeading.size,
-                fontWeight = FontWeight.Medium, color = Color.Black
+                title = "Last 10 Transactions", fontSize = TextConstants.SubHeading.size,
+                fontWeight = FontWeight.Normal, color = Color.Black
+            )
+            TextHeading(
+                title = "View All", fontSize = TextConstants.SubHeading.size,
+                fontWeight = FontWeight.Normal, color = Color.Black
             )
         }
         Spacer(modifier = Modifier.height(5.dp))
 
         LazyColumn(modifier = Modifier.fillMaxSize()){
             item{
-                TransactionElements(transactionsList = transactionList.value)
+                TransactionElements(transactionsList = lastTenTransactions.value)
             }
             
         }

@@ -95,10 +95,10 @@ fun AddExpensesScreen(viewModel: AddAmountViewModel){
             // Add amount
             TextHeading(title = "Amount", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
             TextField(value = amount, onValueChange = {amount = it},
-                placeholder = { Text("Enter the amount", fontSize =  20.sp, color = Color.Black, fontWeight = FontWeight.Light) },
+                placeholder = { Text("Enter the amount", fontSize =  20.sp, color = Color.Black, fontWeight = FontWeight.Normal) },
                 modifier = Modifier.fillMaxWidth().height(70.dp),
                 shape = RoundedCornerShape(10.dp),
-                textStyle = TextStyle(fontSize = 25.sp, color = Color.Black, fontWeight = FontWeight.Medium),
+                textStyle = TextStyle(fontSize = 20.sp, color = Color.Black, fontWeight = FontWeight.Medium),
                 maxLines = 1,
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = colorResource(id = R.color.tertiary),
@@ -138,7 +138,7 @@ fun AddExpensesScreen(viewModel: AddAmountViewModel){
                                 .menuAnchor()
                                 .fillMaxSize(),
                             readOnly = true,
-                            textStyle = TextStyle(fontSize = 23.sp, fontWeight = FontWeight.Medium),
+                            textStyle = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Normal),
                             colors = TextFieldDefaults.textFieldColors(
                                 containerColor = Color.Transparent,
                                 cursorColor = Color.Black,
@@ -155,7 +155,7 @@ fun AddExpensesScreen(viewModel: AddAmountViewModel){
                                     Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically){
                                         Icon(painter = painterResource(id = item.icon), contentDescription = "", modifier = Modifier.size(15.dp))
                                         Spacer(modifier = Modifier.width(10.dp))
-                                        Text(item.name, fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
+                                        Text(item.name, fontWeight = FontWeight.Medium, fontSize = 20.sp)
                                     }
                                 },
 
@@ -175,10 +175,10 @@ fun AddExpensesScreen(viewModel: AddAmountViewModel){
             // Enter description:
             TextHeading(title = "Description", fontSize = 23, fontWeight = FontWeight.SemiBold, color = Color.Black)
             TextField(value = description, onValueChange = {description = it},
-                placeholder = {Text("Write a short description...", fontSize =  20.sp, color = Color.Black, fontWeight = FontWeight.Light)},
+                placeholder = {Text("Write a short description...", fontSize =  20.sp, color = Color.Black, fontWeight = FontWeight.Normal)},
                 modifier = Modifier.fillMaxWidth().height(70.dp),
                 shape = RoundedCornerShape(10.dp),
-                textStyle = TextStyle(fontSize = 25.sp, color = Color.Black, fontWeight = FontWeight.Medium),
+                textStyle = TextStyle(fontSize = 20.sp, color = Color.Black, fontWeight = FontWeight.Medium),
                 maxLines = 1,
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = colorResource(id = R.color.tertiary),
