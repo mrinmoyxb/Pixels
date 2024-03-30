@@ -34,8 +34,7 @@ fun AnalyticsScreen(navHostController: NavHostController, viewModel: AnalyticsVi
 
     val earnings = viewModel.getEarnings.collectAsState(0.0)
     val expenses = viewModel.getExpenses.collectAsState(0.0)
-
-
+    val balance = earnings.value - expenses.value
     Column(modifier = Modifier
         .fillMaxSize()
         .background(colorResource(id = R.color.black_primary))
@@ -52,6 +51,8 @@ fun AnalyticsScreen(navHostController: NavHostController, viewModel: AnalyticsVi
             )
         }
         TextHeading(title = earnings.value.toString(), fontSize = 20, fontWeight = FontWeight.SemiBold, color = Color.White)
+        TextHeading(title = expenses.value.toString(), fontSize = 20, fontWeight = FontWeight.SemiBold, color = Color.White)
+        TextHeading(title = balance.toString(), fontSize = 20, fontWeight = FontWeight.SemiBold, color = Color.White)
 
         //
     }

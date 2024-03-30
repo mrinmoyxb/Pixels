@@ -6,6 +6,6 @@ import com.example.myapplication.Model.Database.FinanceTableDao
 import kotlinx.coroutines.flow.Flow
 
 class AnalyticsViewModel(private val financeDao: FinanceTableDao): ViewModel() {
-    var getEarnings: Flow<List<FinanceTable>> = financeDao.getAllEarnings()
-    var getExpenses: Flow<List<FinanceTable>> = financeDao.getAllExpenses()
+    var getEarnings: Flow<Double> = financeDao.getTotalEarnings()
+    var getExpenses: Flow<Double> = financeDao.getTotalExpenses()
 }
