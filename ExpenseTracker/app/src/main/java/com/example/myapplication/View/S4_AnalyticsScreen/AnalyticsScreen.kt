@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -26,6 +27,7 @@ import androidx.navigation.NavHostController
 import com.example.myapplication.Model.TextConstants
 import com.example.myapplication.View.Components.TextHeading
 import com.example.myapplication.R
+import com.example.myapplication.View.Components.HeadingCard
 import com.example.myapplication.ViewModel.AnalyticsViewModel.AnalyticsViewModel
 
 
@@ -38,10 +40,10 @@ fun AnalyticsScreen(navHostController: NavHostController, viewModel: AnalyticsVi
     Column(modifier = Modifier
         .fillMaxSize()
         .background(colorResource(id = R.color.black_primary))
-        .padding(10.dp)){
+        .padding(10.dp))
+    {
         Spacer(modifier = Modifier.height(40.dp))
-
-        // heading
+        // Heading
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
             TextHeading(
                 title = "Analytics",
@@ -50,10 +52,9 @@ fun AnalyticsScreen(navHostController: NavHostController, viewModel: AnalyticsVi
                 color = Color.White
             )
         }
-        TextHeading(title = earnings.value.toString(), fontSize = 20, fontWeight = FontWeight.SemiBold, color = Color.White)
-        TextHeading(title = expenses.value.toString(), fontSize = 20, fontWeight = FontWeight.SemiBold, color = Color.White)
-        TextHeading(title = balance.toString(), fontSize = 20, fontWeight = FontWeight.SemiBold, color = Color.White)
-
-        //
+        Spacer(modifier = Modifier.height(10.dp))
+        
+        //Balance Card
+        HeadingCard(balance = balance)
     }
 }
