@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="policeStation">পুলিচ ষ্টেচন</string>
+    <string name="mobileCenter">ভ্ৰাম্যমাণ স্বাস্থ্য কেন্দ্ৰ</string>
+    <string name="fireStation">অগ্নি নিৰ্বাপক কেন্দ্ৰ</string>
+    <string name="ambulance">এম্বুলেন্স</string>
+    <string name="districtEmergency">দুৰ্যোগ ব্যৱস্থাপনা</string>
+    <string name="womenHelpline">মহিলা হেল্পলাইন</string>
+</resources>
