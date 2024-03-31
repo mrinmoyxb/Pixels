@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.RawQuery
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -34,5 +35,8 @@ interface FinanceTableDao {
 
     @Query("SELECT SUM(amount) FROM FinanceTable WHERE isEarnings=0")
     fun getTotalExpenses(): Flow<Double>
+
+    @RawQuery(observedBy = arrayOf(FinanceTable::class))
+    fun getMaxExpenditure(): Flow<Double>
 
 }

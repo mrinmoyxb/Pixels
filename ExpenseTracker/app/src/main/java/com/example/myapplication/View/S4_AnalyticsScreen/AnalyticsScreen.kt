@@ -36,6 +36,7 @@ fun AnalyticsScreen(navHostController: NavHostController, viewModel: AnalyticsVi
 
     val earnings = viewModel.getEarnings.collectAsState(0.0)
     val expenses = viewModel.getExpenses.collectAsState(0.0)
+    val maxExpenditure = viewModel.getMaxExpense.collectAsState(0.0)
     val balance = earnings.value - expenses.value
     Column(modifier = Modifier
         .fillMaxSize()
@@ -55,6 +56,6 @@ fun AnalyticsScreen(navHostController: NavHostController, viewModel: AnalyticsVi
         Spacer(modifier = Modifier.height(10.dp))
         
         //Balance Card
-        HeadingCard(balance = balance)
+        HeadingCard(balance = maxExpenditure.value)
     }
 }
