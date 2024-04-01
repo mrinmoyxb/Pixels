@@ -13,7 +13,7 @@ data class PrescriptionsTable(
     val doctorDigitalSignature: String,
     val clinicalFindings: String,
     val medicine: String,
-    val specialConcerns: String,
+    val advice: String,
 
     val formattedDate: String,
     @TypeConverters

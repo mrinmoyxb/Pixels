@@ -1,6 +1,5 @@
 package com.example.pixels.View.PrescriptionsScreen
 
-import androidx.annotation.ColorRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
