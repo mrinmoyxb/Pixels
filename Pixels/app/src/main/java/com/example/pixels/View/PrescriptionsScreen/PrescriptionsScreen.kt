@@ -21,9 +21,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -80,7 +82,9 @@ fun PrescriptionsScreen() {
                 shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(colorResource(id = R.color.blue))
             ) {
-                Box(modifier = Modifier.fillMaxSize().padding(10.dp)) {
+                Box(modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp)) {
                     TextField(
                         value = clinicalFindings, onValueChange = { clinicalFindings = it },
                         placeholder = {
@@ -108,7 +112,9 @@ fun PrescriptionsScreen() {
                 shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(colorResource(id = R.color.green))
             ) {
-                Box(modifier = Modifier.fillMaxSize().padding(10.dp)) {
+                Box(modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp)) {
                     TextField(
                         value = medicine, onValueChange = { medicine = it },
                         placeholder = {
@@ -136,7 +142,9 @@ fun PrescriptionsScreen() {
                 shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(colorResource(id = R.color.pink))
             ) {
-                Box(modifier = Modifier.fillMaxSize().padding(10.dp)) {
+                Box(modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp)) {
                     TextField(
                         value = advice, onValueChange = { advice = it },
                         placeholder = {
@@ -152,6 +160,18 @@ fun PrescriptionsScreen() {
                             containerColor = Color.Transparent
                         )
                     )
+                }
+            }
+
+            // Save Button
+            Spacer(modifier = Modifier.height(15.dp))
+            Card(modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp), colors = CardDefaults.cardColors(Color.Black))
+            {
+                Box(modifier= Modifier.fillMaxSize().padding(10.dp), contentAlignment = Alignment.Center)
+                {
+                    Text("Save Prescription", color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
                 }
             }
         }
