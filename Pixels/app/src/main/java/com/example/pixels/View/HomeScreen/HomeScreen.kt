@@ -1,4 +1,4 @@
-package com.example.pixels.View
+package com.example.pixels.View.HomeScreen
 
 import android.app.Activity
 import androidx.compose.foundation.background
