@@ -5,11 +5,12 @@ import androidx.room.PrimaryKey
 import java.sql.Date
 
 @Entity
-data class PescriptionsTable(
+data class PrescriptionsTable(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+
     val heading: String,
     val doctorDigitalSignature: String,
-    val date: Date,
+    val dateAdded: Date,
     val description: String,
 )
