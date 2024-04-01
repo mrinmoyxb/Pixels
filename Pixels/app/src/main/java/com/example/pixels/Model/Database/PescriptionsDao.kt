@@ -11,8 +11,7 @@ interface PrescriptionsDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun inputPrescription(p: PrescriptionsTable)
 
-    @Query("SELECT *FROM PrescriptionsTable ORDER BY dateAdded DESC")
+    @Query("SELECT *FROM PrescriptionsTable ORDER BY dateAddedInMillis DESC")
     fun getAllPrescriptions(): Flow<List<PrescriptionsTable>>
-
 
 }

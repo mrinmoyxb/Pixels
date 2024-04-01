@@ -2,7 +2,7 @@ package com.example.pixels.Model.Database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.sql.Date
+import androidx.room.TypeConverters
 
 @Entity
 data class PrescriptionsTable(
@@ -11,6 +11,10 @@ data class PrescriptionsTable(
 
     val heading: String,
     val doctorDigitalSignature: String,
-    val dateAdded: Date,
     val description: String,
+
+    val formattedDate: String,
+    @TypeConverters
+    val dateAddedInMillis: Long,
+
 )
